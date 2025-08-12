@@ -1,0 +1,215 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+tproxy-port: 7893
+allow-lan: true
+bind-address: '*'
+mode: rule
+log-level: info
+external-controller: '127.0.0.1:9090'
+unified-delay: true
+dns:
+    enable: true
+    listen: '0.0.0.0:53'
+    ipv6: false
+    default-nameserver: [114.114.114.114, 8.8.8.8]
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
+    fallback: ['https://doh.dns.sb/dns-query', 'https://dns.cloudflare.com/dns-query', 'https://dns.twnic.tw/dns-query', 'tls://8.8.4.4:853']
+    fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
+clash-for-android:
+    append-system-dns: false
+profile:
+    tracing: true
+experimental:
+    sniff-tls-sni: true
+rule-providers:
+    reject: { type: http, behavior: domain, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt', path: ./ruleset/reject.yaml, interval: 86400 }
+    icloud: { type: http, behavior: domain, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt', path: ./ruleset/icloud.yaml, interval: 86400 }
+    apple: { type: http, behavior: domain, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt', path: ./ruleset/apple.yaml, interval: 86400 }
+    google: { type: http, behavior: domain, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt', path: ./ruleset/google.yaml, interval: 86400 }
+    proxy: { type: http, behavior: domain, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt', path: ./ruleset/proxy.yaml, interval: 86400 }
+    direct: { type: http, behavior: domain, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt', path: ./ruleset/direct.yaml, interval: 86400 }
+    private: { type: http, behavior: domain, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt', path: ./ruleset/private.yaml, interval: 86400 }
+    gfw: { type: http, behavior: domain, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt', path: ./ruleset/gfw.yaml, interval: 86400 }
+    tld-not-cn: { type: http, behavior: domain, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt', path: ./ruleset/tld-not-cn.yaml, interval: 86400 }
+    telegramcidr: { type: http, behavior: ipcidr, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt', path: ./ruleset/telegramcidr.yaml, interval: 86400 }
+    cncidr: { type: http, behavior: ipcidr, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt', path: ./ruleset/cncidr.yaml, interval: 86400 }
+    lancidr: { type: http, behavior: ipcidr, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt', path: ./ruleset/lancidr.yaml, interval: 86400 }
+    applications: { type: http, behavior: classical, url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt', path: ./ruleset/applications.yaml, interval: 86400 }
+proxies:
+    - { name: '剩余流量：33.24 GB', type: ss, server: chat.redbookai.xyz, port: 40001, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: '距离下次重置剩余：19 天', type: ss, server: chat.redbookai.xyz, port: 40001, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 套餐到期：2025-09-01, type: ss, server: chat.redbookai.xyz, port: 40001, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Hong Kong 01', type: ss, server: chat.redbookai.xyz, port: 40001, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Hong Kong 02', type: ss, server: chat.redbookai.xyz, port: 40002, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Hong Kong 03', type: ss, server: chat.redbookai.xyz, port: 40003, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Hong Kong 04', type: ss, server: chat.redbookai.xyz, port: 40004, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Hong Kong 05', type: ss, server: chat.redbookai.xyz, port: 40005, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Singapore 01', type: ss, server: chat.redbookai.xyz, port: 40021, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Singapore 02', type: ss, server: chat.redbookai.xyz, port: 40022, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Singapore 03', type: ss, server: chat.redbookai.xyz, port: 40023, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Singapore 04', type: ss, server: chat.redbookai.xyz, port: 40024, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Singapore 05', type: ss, server: chat.redbookai.xyz, port: 40025, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Japan 01', type: ss, server: chat.redbookai.xyz, port: 40041, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Japan 02', type: ss, server: chat.redbookai.xyz, port: 40042, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Japan 03', type: ss, server: chat.redbookai.xyz, port: 40043, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Japan 04', type: ss, server: chat.redbookai.xyz, port: 40044, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Japan 05', type: ss, server: chat.redbookai.xyz, port: 40045, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'United States 01', type: ss, server: chat.redbookai.xyz, port: 40061, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'United States 02', type: ss, server: chat.redbookai.xyz, port: 40062, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'United States 03', type: ss, server: chat.redbookai.xyz, port: 40063, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'United States 04', type: ss, server: chat.redbookai.xyz, port: 40064, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'United States 05', type: ss, server: chat.redbookai.xyz, port: 40065, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Tai wan 01', type: ss, server: chat.redbookai.xyz, port: 40081, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Tai wan 02', type: ss, server: chat.redbookai.xyz, port: 40082, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Tai wan 03', type: ss, server: chat.redbookai.xyz, port: 40083, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Tai wan 04', type: ss, server: chat.redbookai.xyz, port: 40084, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Tai wan 05', type: ss, server: chat.redbookai.xyz, port: 40085, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Sign On VIP x0.2', type: ss, server: chat.redbookai.xyz, port: 40301, cipher: aes-128-gcm, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true }
+    - { name: 'Taiwan 01', type: trojan, server: chat.redbookai.xyz, port: 17181, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Taiwan 02', type: trojan, server: chat.redbookai.xyz, port: 17182, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Taiwan 03', type: trojan, server: chat.redbookai.xyz, port: 17173, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Taiwan 04', type: trojan, server: chat.redbookai.xyz, port: 17184, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Taiwan 05', type: trojan, server: chat.redbookai.xyz, port: 17185, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Korea 01', type: trojan, server: chat.redbookai.xyz, port: 17201, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Korea 02', type: trojan, server: chat.redbookai.xyz, port: 17202, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Indonesia, type: trojan, server: chat.redbookai.xyz, port: 17203, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Thailand, type: trojan, server: chat.redbookai.xyz, port: 17204, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Australia, type: trojan, server: chat.redbookai.xyz, port: 17205, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Vietnam, type: trojan, server: chat.redbookai.xyz, port: 17206, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Malaysia x3.0', type: trojan, server: chat.redbookai.xyz, port: 17207, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Macao x2.0', type: trojan, server: chat.redbookai.xyz, port: 17208, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Philippines x2.0', type: trojan, server: chat.redbookai.xyz, port: 17209, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Cambodia x2.0', type: trojan, server: chat.redbookai.xyz, port: 17210, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Laos x2.0', type: trojan, server: chat.redbookai.xyz, port: 17211, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Myanmar x2.0', type: trojan, server: chat.redbookai.xyz, port: 17212, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Pakistan x2.0', type: trojan, server: chat.redbookai.xyz, port: 17213, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Argentina x2.0', type: trojan, server: chat.redbookai.xyz, port: 17214, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Egypt x2.0', type: trojan, server: chat.redbookai.xyz, port: 17215, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Dubai, type: trojan, server: chat.redbookai.xyz, port: 17301, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: France, type: trojan, server: chat.redbookai.xyz, port: 17302, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Netherlands, type: trojan, server: chat.redbookai.xyz, port: 17303, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Sweden, type: trojan, server: chat.redbookai.xyz, port: 17304, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Saudi Arabia', type: trojan, server: chat.redbookai.xyz, port: 17305, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Israel, type: trojan, server: chat.redbookai.xyz, port: 17306, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'South Africa', type: trojan, server: chat.redbookai.xyz, port: 17307, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Brazil, type: trojan, server: chat.redbookai.xyz, port: 17308, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Germany, type: trojan, server: chat.redbookai.xyz, port: 17309, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'Nigeria x3.0', type: trojan, server: chat.redbookai.xyz, port: 17310, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: Turkey, type: trojan, server: chat.redbookai.xyz, port: 17311, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+    - { name: 'United Kingdom', type: trojan, server: chat.redbookai.xyz, port: 17312, password: 6272af45-9284-4c83-a2c0-2ac2aca56fe8, udp: true, sni: mmbiz.qpic.cn, skip-cert-verify: true }
+proxy-groups:
+    - { name: KooDog, type: select, proxies: ['剩余流量：33.24 GB', '距离下次重置剩余：19 天', 套餐到期：2025-09-01, 'Hong Kong 01', 'Hong Kong 02', 'Hong Kong 03', 'Hong Kong 04', 'Hong Kong 05', 'Singapore 01', 'Singapore 02', 'Singapore 03', 'Singapore 04', 'Singapore 05', 'Japan 01', 'Japan 02', 'Japan 03', 'Japan 04', 'Japan 05', 'United States 01', 'United States 02', 'United States 03', 'United States 04', 'United States 05', 'Tai wan 01', 'Tai wan 02', 'Tai wan 03', 'Tai wan 04', 'Tai wan 05', 'Sign On VIP x0.2', 'Taiwan 01', 'Taiwan 02', 'Taiwan 03', 'Taiwan 04', 'Taiwan 05', 'Korea 01', 'Korea 02', Indonesia, Thailand, Australia, Vietnam, 'Malaysia x3.0', 'Macao x2.0', 'Philippines x2.0', 'Cambodia x2.0', 'Laos x2.0', 'Myanmar x2.0', 'Pakistan x2.0', 'Argentina x2.0', 'Egypt x2.0', Dubai, France, Netherlands, Sweden, 'Saudi Arabia', Israel, 'South Africa', Brazil, Germany, 'Nigeria x3.0', Turkey, 'United Kingdom'] }
+rules:
+    - 'DOMAIN,8.134.152.191,DIRECT'
+    - 'RULE-SET,applications,DIRECT'
+    - 'RULE-SET,private,DIRECT'
+    - 'RULE-SET,icloud,DIRECT'
+    - 'RULE-SET,apple,DIRECT'
+    - 'RULE-SET,google,KooDog'
+    - 'RULE-SET,proxy,KooDog'
+    - 'RULE-SET,direct,DIRECT'
+    - 'RULE-SET,gfw,KooDog'
+    - 'RULE-SET,tld-not-cn,KooDog'
+    - 'RULE-SET,telegramcidr,KooDog'
+    - 'RULE-SET,cncidr,DIRECT'
+    - 'RULE-SET,lancidr,DIRECT'
+    - 'GEOIP,CN,DIRECT'
+    - 'MATCH,KooDog'
+    - 'DOMAIN-SUFFIX,dlandroid.rcv.sandai.net,KooDog'
+    - 'DOMAIN-SUFFIX,embylife.xyz,KooDog'
+    - 'DOMAIN-SUFFIX,emby.moe,KooDog'
+    - 'DOMAIN-SUFFIX,xxlb.net,KooDog'
+    - 'DOMAIN-SUFFIX,s.outong-valve.com,DIRECT'
+    - 'DOMAIN-SUFFIX,liminalnet.site,KooDog'
+    - 'PROCESS-NAME,WsaClient.exe,KooDog'
+    - 'PROCESS-NAME,wpsoffice.exe,DIRECT'
+    - 'PROCESS-NAME,wps.exe,DIRECT'
+    - 'PROCESS-NAME,ET.exe,DIRECT'
+    - 'PROCESS-NAME,Doubao.exe,DIRECT'
+    - 'PROCESS-NAME,crashpad_handler.exe,DIRECT'
+    - 'PROCESS-NAME,TextInputHost.exe,DIRECT'
+    - 'PROCESS-NAME,UserOOBEBroker.exe,DIRECT'
+    - 'PROCESS-NAME,fontdrvhost.exe,DIRECT'
+    - 'PROCESS-NAME,verge-mihomo.exe,DIRECT'
+    - 'PROCESS-NAME,VideoUI.exe,DIRECT'
+    - 'PROCESS-NAME,MAL.exe,DIRECT'
+    - 'PROCESS-NAME,svchost.exe,DIRECT'
+    - 'PROCESS-NAME,smss.exe,DIRECT'
+    - 'PROCESS-NAME,wininit.exe,DIRECT'
+    - 'PROCESS-NAME,WUHFHost.exe,DIRECT'
+    - 'PROCESS-NAME,taskhostw.exe,DIRECT'
+    - 'PROCESS-NAME,audiodg.exe,DIRECT'
+    - 'PROCESS-NAME,explorer.exe,DIRECT'
+    - 'PROCESS-NAME,wmiprvSE.exe,DIRECT'
+    - 'PROCESS-NAME,YoudaoDictHelper.exe,DIRECT'
+    - 'PROCESS-NAME,services.exe,DIRECT'
+    - 'PROCESS-NAME,spoolsv.exe,DIRECT'
+    - 'PROCESS-NAME,VolSnapshotX64.exe,DIRECT'
+    - 'PROCESS-NAME,conhost.exe,DIRECT'
+    - 'PROCESS-NAME,taskmgr.exe,DIRECT'
+    - 'PROCESS-NAME,systemsettings.exe,DIRECT'
+    - 'PROCESS-NAME,msedgewebview2.exe,DIRECT'
+    - 'PROCESS-NAME,SGTool.exe,DIRECT'
+    - 'PROCESS-NAME,qmbsrv.exe,DIRECT'
+    - 'PROCESS-NAME,YoudaoDict.exe,DIRECT'
+    - 'PROCESS-NAME,QQPCExternal.exe,DIRECT'
+    - 'PROCESS-NAME,QQPCRTP.exe,DIRECT'
+    - 'PROCESS-NAME,QQPCTray.exe,DIRECT'
+    - 'PROCESS-NAME,dwm.exe,DIRECT'
+    - 'PROCESS-NAME,AweSun.exe,DIRECT'
+    - 'PROCESS-NAME,Weixin.exe,DIRECT'
+    - 'PROCESS-NAME,downloader.exe,DIRECT'
+    - 'PROCESS-NAME,OcxConfigClient.exe,DIRECT'
+    - 'PROCESS-NAME,tidecoin-qt.exe,DIRECT'
+    - 'PROCESS-NAME,DingTalk.exe,DIRECT'
+    - 'PROCESS-NAME,DingtalkLauncher.exe,DIRECT'
+    - 'PROCESS-NAME,iTunes.exe,DIRECT'
+    - 'PROCESS-NAME,GacRunner.exe,DIRECT'
+    - 'PROCESS-NAME,LootHoarder.exe,DIRECT'
+    - 'PROCESS-NAME,WeChatAppEx.exe,DIRECT'
+    - 'PROCESS-NAME,Binance.exe,DIRECT'
+    - 'PROCESS-NAME,ispirit.exe,DIRECT'
+    - 'PROCESS-NAME,HyperPlay.exe,DIRECT'
+    - 'PROCESS-NAME,desktop.exe,DIRECT'
+    - 'PROCESS-NAME,JianyingPro.exe,DIRECT'
+    - 'PROCESS-NAME,uppdater.exe,DIRECT'
+    - 'PROCESS-NAME,WeChatappEx.exe,DIRECT'
+    - 'PROCESS-NAME,MadGlobal-Win64-Shipping.exe,DIRECT'
+    - 'PROCESS-NAME,hexinhelper.exe,DIRECT'
+    - 'PROCESS-NAME,hexin.exe,DIRECT'
+    - 'PROCESS-NAME,MadGlobal.exe,DIRECT'
+    - 'PROCESS-NAME,比特浏览器.exe,DIRECT'
+    - 'PROCESS-NAME,uprock-mining.exe,DIRECT'
+    - 'PROCESS-NAME,msedge.exe,DIRECT'
+    - 'PROCESS-NAME,phpcoin-wallet-win.exe,DIRECT'
+    - 'PROCESS-NAME,NightCrowsGLauncher.exe,DIRECT'
+    - 'PROCESS-NAME,LetsPRO.exe,DIRECT'
+    - 'PROCESS-NAME,Kryptokrona-wallet.exe,DIRECT'
+    - 'PROCESS-NAME,mCloud.exe,DIRECT'
+    - 'PROCESS-NAME,launcher.exe,DIRECT'
+    - 'PROCESS-NAME,UCCloudDrive.exe,DIRECT'
+    - 'PROCESS-NAME,千帆客服工作台.exe,DIRECT'
+    - 'PROCESS-NAME,OKX.exe,DIRECT'
+    - 'PROCESS-NAME,BaiduNetdisk.exe,DIRECT'
+    - 'PROCESS-NAME,eCloud.exe,DIRECT'
+    - 'PROCESS-NAME,tdxw.exe,DIRECT'
+    - 'PROCESS-NAME,hexinlauncher.exe,DIRECT'
+    - 'PROCESS-NAME,SunloginClient.exe,DIRECT'
+    - 'PROCESS-NAME,qq.exe,DIRECT'
+    - 'PROCESS-NAME,WeChat.exe,DIRECT'
+    - 'PROCESS-NAME,360chrome.exe,DIRECT'
+    - 'PROCESS-NAME,dnplayer.exe,DIRECT'
+    - 'PROCESS-NAME,dnmultiplayerex.exe,DIRECT'
+    - 'DOMAIN-SUFFIX,kdcloud.uk,KooDog'
+    - 'DOMAIN-SUFFIX,koodog.com,KooDog'
+    - 'DOMAIN-SUFFIX,0085.top,KooDog'
+    - 'DOMAIN-SUFFIX,avatargpt.xyz,KooDog'
+    - 'DOMAIN-KEYWORD,openai,KooDog'
+    - 'DOMAIN-SUFFIX,ios.chat.openai.com,KooDog'
+    - 'DOMAIN-SUFFIX,android.chat.openai.com,KooDog'
+    - 'DOMAIN-SUFFIX,chatgpt.com,KooDog'
+    - 'DOMAIN-SUFFIX,dlandroid.rcv.sandai.net,KooDog'
