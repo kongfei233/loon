@@ -6,5 +6,6 @@ DOMAIN-SUFFIX, meituan.com,REJECT
 DOMAIN-SUFFIX, tencent.com,REJECT
 DOMAIN-SUFFIX, alicdn.com,REJECT
 DOMAIN-SUFFIX, umeng.com,REJECT
-
+DOMAIN-SUFFIX, weixin.com,REJECT
+DOMAIN-SUFFIX, umengcloud.com,REJECT
 
