@@ -1,7 +1,7 @@
 #!name=Bilibili 纯净画质
 #!desc=仅解锁 Bilibili 1080P/4K 画质，无去广告功能。
-#!author=G
-img-url = https://raw.githubusercontent.com/Orz-3/Mini/master/Color/Bilibili.png
+#!author=Kong
+#!icon=https://raw.githubusercontent.com/deezertidal/private/main/icons/bili.png
 
 [Script]
 http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? script-path=bili_vip.js, requires-body=true, tag=画质解锁
