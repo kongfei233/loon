@@ -10,3 +10,4 @@ bili_vip.js = "let obj = JSON.parse($response.body); if (obj && obj.data) { obj.
 
 [MITM]
 hostname = app.bilibili.com
+qq
